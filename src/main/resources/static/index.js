@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const taskId = e.target.getAttribute("data-id");
 
       // Send a DELETE request to delete the task by ID
-      fetch(`/tasks/${taskId}`, {
+      fetch(`http://localhost:8080/api/tasks/${taskId}`, {
         method: "DELETE",
       })
         .then(() => {
@@ -57,6 +57,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Function to load and display tasks from the server
   function loadTasks() {
+	  console.log("load task function calls");
     // Send a GET request to retrieve all tasks
     fetch("http://localhost:8080/api/tasks")
       .then((response) => response.json())
@@ -67,7 +68,7 @@ document.addEventListener("DOMContentLoaded", function () {
         data.forEach((task) => {
           const taskItem = document.createElement("li");
           taskItem.innerHTML = `
-                        ${task.name} - ${task.description}
+                        ${task.name} - ${task.description} - ${task.status}
                         <button class="delete-button" data-id="${task.id}">Delete</button>
                     `;
           taskList.appendChild(taskItem);

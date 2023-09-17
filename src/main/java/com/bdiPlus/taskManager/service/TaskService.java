@@ -7,6 +7,7 @@ import java.util.List;
 import com.bdiPlus.taskManager.model.Task;
 
 public interface TaskService {
+	
 	List< com.bdiPlus.taskManager.model.Task> findAll();
 	com.bdiPlus.taskManager.model.Task findById(Long id);
 	com.bdiPlus.taskManager.model.Task save(com.bdiPlus.taskManager.model.Task task);
