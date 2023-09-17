@@ -9,8 +9,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const formData = new FormData(taskForm);
     const taskData = {
-      title: formData.get("title"),
+      name: formData.get("name"),
       description: formData.get("description"),
+      status: formData.get("status")
     };
 
     // Send a POST request to create a new task
@@ -26,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // Add the new task to the task list
         const taskItem = document.createElement("li");
         taskItem.innerHTML = `
-                    ${data.title} - ${data.description}
+                    ${data.title} - ${data.description}-${data.status}
                     <button class="delete-button" data-id="${data.id}">Delete</button>
                 `;
         taskList.appendChild(taskItem);
@@ -66,7 +67,7 @@ document.addEventListener("DOMContentLoaded", function () {
         data.forEach((task) => {
           const taskItem = document.createElement("li");
           taskItem.innerHTML = `
-                        ${task.title} - ${task.description}
+                        ${task.name} - ${task.description}
                         <button class="delete-button" data-id="${task.id}">Delete</button>
                     `;
           taskList.appendChild(taskItem);
